@@ -2,15 +2,13 @@
 
 namespace Ym\AliyunVod;
 
-
 use Ym\AliyunCore\DefaultAcsClient;
 use Ym\AliyunCore\Profile\DefaultProfile;
 use Hyperf\Contract\ConfigInterface;
-use Hyperf\Utils\ApplicationContext;
+use Hyperf\Context\ApplicationContext;
 
 class Client
 {
-
 
     public $client;
 
@@ -45,10 +43,11 @@ class Client
 
     /**
      * BaseService constructor.
-     * @param null $config
+     *
+     * @param null   $config
      * @param string $securityToken 如果是设置了sts模式，传入这个参数
      */
-    public function __construct($config=null,$securityToken='')
+    public function __construct($config = null, $securityToken = '')
     {
         $this->setConfig($config);
         if ($this->type == 'sts') {
@@ -56,7 +55,6 @@ class Client
         } else {
             $this->client = $this->initVodClient();
         }
-
     }
 
     /**
@@ -64,6 +62,7 @@ class Client
      * User：YM
      * Date：2020/4/20
      * Time：10:09 AM
+     *
      * @return DefaultAcsClient
      */
     public function initVodClient()
@@ -73,18 +72,24 @@ class Client
         return new DefaultAcsClient($profile);
     }
 
-
     /**
      * initVodSTSClient
      * User：YM
      * Date：2020/4/20
      * Time：10:09 AM
+     *
      * @param $securityToken
+     *
      * @return DefaultAcsClient
      */
     public function initVodSTSClient($securityToken)
     {
-        $profile = DefaultProfile::getProfile($this->regionId, $this->accessKeyID, $this->accessKeySecret, $securityToken);
+        $profile = DefaultProfile::getProfile(
+            $this->regionId,
+            $this->accessKeyID,
+            $this->accessKeySecret,
+            $securityToken
+        );
         return new DefaultAcsClient($profile);
     }
 
@@ -93,20 +98,21 @@ class Client
      * User：YM
      * Date：2020/4/20
      * Time：10:09 AM
+     *
      * @param null $config
      */
     public function setConfig($config = null)
     {
         if (!$config) {
             $container = ApplicationContext::getContainer();
-            $config = $container->get(ConfigInterface::class)->get('aliyun_vod');
+            $config    = $container->get(ConfigInterface::class)->get('aliyun_vod');
         }
-        $this->accessKeyID = $config['access_key']??'';
-        $this->accessKeySecret = $config['secret_key']??'';
-        $this->regionId = $config['region_id']??'';
-        $this->timeout = $config['timeout']??'';
-        $this->type = $config['type']??'';
-        $this->acceptFormat = $config['accept_format']??'';
+        $this->accessKeyID     = $config['access_key'] ?? '';
+        $this->accessKeySecret = $config['secret_key'] ?? '';
+        $this->regionId        = $config['region_id'] ?? '';
+        $this->timeout         = $config['timeout'] ?? '';
+        $this->type            = $config['type'] ?? '';
+        $this->acceptFormat    = $config['accept_format'] ?? '';
     }
 
 }

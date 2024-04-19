@@ -1,45 +1,50 @@
 {
-    "name": "ezijing/aliyun-vod",
-    "description": "AliYun Vod For Hyperf",
-    "keywords": [
-        "php",
-        "swoole",
-        "hyperf",
-        "aliyun",
-        "vod"
-    ],
-    "license": "MIT",
-    "require": {
-        "php": ">=7.2",
-        "hyperf/utils": "~2.0.0",
-        "ezijing/aliyun-core": "V1.0.0"
-    },
-    "require-dev": {
-        "ezijing/aliyun-core": "V1.0.0",
-        "php": ">=7.2"
-    },
-    "authors": [
-        {
-            "name": "wangyizheng",
-            "email": "18435134258@163.com"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "Ym\\AliyunVod\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "YmTest\\AliyunVod\\": "tests/"
-        }
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "hyperf": {
-            "config": "Ym\\AliyunVod\\ConfigProvider"
-        }
+  "name": "alex-qiu/aliyun-vod",
+  "description": "AliYun Vod For Hyperf",
+  "keywords": [
+    "php",
+    "swoole",
+    "hyperf",
+    "aliyun",
+    "vod"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=8.0",
+    "hyperf/utils": "3.0.*",
+    "alex-qiu/aliyun-core": "1.0.1"
+  },
+  "require-dev": {
+    "php": ">=8.0"
+  },
+  "authors": [
+    {
+      "name": "alex",
+      "email": "alex.qiubo@qq.com"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Ym\\AliyunVod\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "YmTest\\AliyunVod\\": "tests/"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "hyperf": {
+      "config": "Ym\\AliyunVod\\ConfigProvider"
+    }
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.org"
+    }
+  }
 }
